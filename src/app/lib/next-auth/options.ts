@@ -1,7 +1,7 @@
 import { NextAuthOptions } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { Prisma } from "@prisma/client";
+import prisma from "./prisma";
 import { Session } from "inspector/promises";
 
 export const nextAuthOptions: NextAuthOptions= {
@@ -15,7 +15,7 @@ export const nextAuthOptions: NextAuthOptions= {
 
     ],
 
-    adapter: PrismaAdapter(prisma),
+    adapter: PrismaAdapter(prisma), //instantiation in sheme.prisma and env file
     callbacks: {
 
         //sign inからFEに値を渡す仕組み callback関数
