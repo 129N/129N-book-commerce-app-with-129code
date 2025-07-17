@@ -16,6 +16,40 @@ export const nextAuthOptions: NextAuthOptions= {
     ],
 
     adapter: PrismaAdapter(prisma), //instantiation in sheme.prisma and env file
+
+// adapter: {
+//   ...PrismaAdapter(prisma),
+//   getUserByAccount: async ({ provider, providerAccountId }) => {
+//     const account = await prisma.account.findUnique({
+//       where: {
+//         providerId_providerAccountId: {
+//           providerId: provider,
+//           providerAccountId: providerAccountId
+//         }
+//       },
+//       select: {
+//         user: true
+//       }
+//     });
+
+//     if (!account?.user) return null;
+
+//     const user = account.user;
+
+//     return {
+//       id: user.id,
+//       name: user.name,
+//       email: user.email ?? "", // ✅ nullなら空文字にする（NextAuth仕様）
+//       emailVerified: user.emailVerified,
+//       image: user.image,
+//     };
+//   }
+// }
+
+
+
+
+
     callbacks: {
 
         //sign inからFEに値を渡す仕組み callback関数
