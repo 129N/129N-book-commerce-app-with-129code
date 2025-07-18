@@ -8,6 +8,7 @@ const Header = () => {
   const {data : session} = useSession();
   const user = session?.user;
    console.log(user);
+const profileImage = user?.image && user.image.trim() !== "" ? user.image : "/default_icon.png";
 
   return (
     <header className="bg-slate-600 text-gray-100 shadow-lg">
@@ -34,7 +35,8 @@ const Header = () => {
               width={50}
               height={50}
               alt="profile_icon"
-              src={user?.image || "/default_icon.png"} //public に存在
+              src="/default_icon.png" //public に存在
+           
             />
           </Link>
         </div>

@@ -35,7 +35,7 @@ export default function Login() {
             return(
           <div key = {provider.id} className="text-center">
               <button 
-              onClick={() => signIn(provider.id, {callbackUrl: "/"})}
+              onClick={() => signIn(provider.id, {callbackUrl: "/", redirect: false})}
               className="bg-gray-900 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center w-full">
                 <svg
                   role="img"

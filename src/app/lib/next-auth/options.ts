@@ -3,6 +3,8 @@ import GithubProvider from "next-auth/providers/github";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "./prisma";
 import { Session } from "inspector/promises";
+import { CustomPrismaAdapter } from "./CustomPrismaAdapter";
+
 
 export const nextAuthOptions: NextAuthOptions= {
     //ログインをいろいろなプロバイダーでできる。
@@ -15,8 +17,8 @@ export const nextAuthOptions: NextAuthOptions= {
 
     ],
 
-    adapter: PrismaAdapter(prisma), //instantiation in sheme.prisma and env file
-
+    //adapter: PrismaAdapter(prisma), //instantiation in sheme.prisma and env file
+    adapter: CustomPrismaAdapter(prisma),
 // adapter: {
 //   ...PrismaAdapter(prisma),
 //   getUserByAccount: async ({ provider, providerAccountId }) => {
