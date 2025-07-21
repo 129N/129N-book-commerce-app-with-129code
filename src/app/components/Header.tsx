@@ -5,10 +5,16 @@ import React from "react";
 import { useSession } from "next-auth/react";
 const Header = () => {
 
-  const {data : session} = useSession();
+  const {data : session, status} = useSession();
+    if (status === "loading") return null;
+
   const user = session?.user;
    console.log(user);
-const profileImage = user?.image && user.image.trim() !== "" ? user.image : "/default_icon.png";
+
+const profileImage: string = user?.image && user.image.trim() !== "" 
+  ? user.image 
+  : "/default_icon.png";
+
 
   return (
     <header className="bg-slate-600 text-gray-100 shadow-lg">
@@ -30,15 +36,36 @@ const profileImage = user?.image && user.image.trim() !== "" ? user.image : "/de
             ログイン
           </Link>
 
-          <Link href={`/profile`}>
+          {/* <Link href={`/profile`}>
             <Image
               width={50}
               height={50}
               alt="profile_icon"
-              src="/default_icon.png" //public に存在
+              src={profileImage}
+    // src={ "/default_icon.png"}//public に存在
            
-            />
+           />
+          </Link> */}
+
+           <Link href={`/profile`}>
+            {user?.image && user.image.trim() !== "" ? (
+              <Image
+                width={50}
+                height={50}
+                alt="profile_icon"
+                src={user.image}
+              />
+            ) : (
+              <Image
+                width={50}
+                height={50}
+                alt="default_profile_icon"
+                src="/default_icon.png"
+              />
+            )}
           </Link>
+
+          
         </div>
       </nav>
     </header>

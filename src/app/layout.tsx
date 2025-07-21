@@ -26,10 +26,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${notoSansJP.className} antialiased`}>
+
         <NextAuthProvider>
           <Header/>
           {children}
         </NextAuthProvider>
+        
       </body>
     </html>
   );
