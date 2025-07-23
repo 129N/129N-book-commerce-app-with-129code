@@ -2,6 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import {Book as BookType} from '@/app/components/Book';
+
+// type Props = {
+//   book: BookType;
+// };
+// const Book = ({ book }: Props) =>
+
 
 // eslint-disable-next-line react/display-name
 const Book = ({ book }: any) => {
@@ -28,7 +35,7 @@ const Book = ({ book }: any) => {
         <a className="cursor-pointer shadow-2xl duration-300 hover:translate-y-1 hover:shadow-none">
           <Image
             priority
-            src={book.thumbnail}
+            src={book.thumbnail.url}
             alt={book.title}
             width={450}
             height={350}

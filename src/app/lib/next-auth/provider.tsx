@@ -8,3 +8,5 @@ export const NextAuthProvider: FC<PropsWithChildren>= ({children}) =>{
 };
 
 //anyでエラーになるのはなぜ？？
+//childrenを受け取るコンポネントだと、FC<PropsWithChildren>が
+// NextAuthProviderに宣言する
