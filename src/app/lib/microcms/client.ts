@@ -1,6 +1,8 @@
 import { createClient, MicroCMSListResponse } from 'microcms-js-sdk';
 
-import {Book as BookType} from '@/app/components/Book';
+// import {Types as BookType} from '@/app/components/Book';
+import  {Types as BookType} from '@/app/types/types';
+
 
 export const client = createClient({
 

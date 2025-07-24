@@ -1,7 +1,7 @@
 // "use client";
 import Book from "./components/Book";
 import { getAllBooks } from "./lib/microcms/client";
-import {Book as BookType} from '@/app/components/Book';
+import  {Types as BookType} from '@/app/types/types';
 
 // 疑似データ
 // const books = [
