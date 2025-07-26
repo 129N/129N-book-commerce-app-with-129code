@@ -6,6 +6,9 @@ import  {Types as BookType} from '@/app/types/types';
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { start } from "repl";
+import { POST } from "../api/checkout/route";
+import { title } from "process";
 
 
 type BookProps = {
@@ -31,7 +34,34 @@ const Book = ({ book }: BookProps) => {
   const handlecancel =() => {
     setShowModal(false);
   };
+
+
+  //APIをたたく場所はここ
+  const startCheckOut = async () => {
+  try{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/checkout`,{
+      method: "POST",
+      headers: {"Content-Type" : "application/json"}, 
+      body: JSON.stringify({
+        title: book.title, 
+        price: book.price
+      }),
+    })
+
+    const responseData = await res.json();
+
+    if(responseData){
+      router.push(responseData.checkout_url);
+    }
+
+  } catch(err: any){
+    console.error(err);
+  }
+  };
   
+
+  //ログインしていなければ、/loginページ行き
+  //stripeのページ行き
   const handlePurchaseConfirm = () => {
       if(!user)
         {
@@ -41,6 +71,7 @@ const Book = ({ book }: BookProps) => {
         }
         else{
           //Stripe pay screen
+          startCheckOut();
         }
   };
   
