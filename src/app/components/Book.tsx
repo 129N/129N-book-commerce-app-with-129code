@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import  {Types as BookType} from '@/app/types/types';
-import { useState } from "react";
+import { use, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { start } from "repl";
@@ -23,10 +23,12 @@ const Book = ({ book }: BookProps) => {
   const [showModal, setShowModal] = useState(false);
 
   const { data: session} = useSession();
-  const user = session?.user;
+  const user: any = session?.user;
 
   const router = useRouter();
-
+  console.log("bookのIDはここ")
+console.log(user?.id);
+console.log(book?.id);
   const handlePurchaseClick = () =>{
     setShowModal(true);
   };
@@ -44,7 +46,9 @@ const Book = ({ book }: BookProps) => {
       headers: {"Content-Type" : "application/json"}, 
       body: JSON.stringify({
         title: book.title, 
-        price: book.price
+        price: book.price,
+        userId: user?.id,
+        bookId: book.id,
       }),
     })
 

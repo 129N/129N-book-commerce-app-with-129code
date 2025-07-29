@@ -10,7 +10,7 @@ export async function POST (request: Request, response: Response) {
 
     const {title, price, bookId, userId} = await request.json();
 
-    console.log(title, price);
+    console.log(title, price, bookId, userId);
     try{
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
@@ -38,6 +38,7 @@ export async function POST (request: Request, response: Response) {
             mode: "payment",
             success_url: `http://localhost:3000/book/checkout-sucess?session_id={CHECKOUT_SESSION_ID}`, 
             cancel_url: `http://localhost:3000`, 
+
         });
 
 

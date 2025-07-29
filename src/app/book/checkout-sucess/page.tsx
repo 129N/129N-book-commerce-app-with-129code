@@ -1,10 +1,13 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import {useSearchParams } from "next/navigation";
 
 const PurchaseSuccess = () => {
+
+  //購入が成功したら、bookUrlのところに飛ぶ
+  const [bookUrl, setbookUrl] = useState(null);
 
   const serchparams = useSearchParams();
   const sessionID = serchparams.get("session_id"); 
@@ -24,22 +27,34 @@ const PurchaseSuccess = () => {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API}/checkout/success`,
               {method : "POST",
                 headers: {"Content-Type" : "application/json"}, 
-                 body: JSON.stringify({sessionID }),
+                 body: JSON.stringify({ sessionid: sessionID }),
+                 //ここのエラーが時間かかった。
               },
             );
-      console.log(res.json());
+        //console.log(res.json());
+        
+            const data = await res.json();
+             console.log("📦 サーバーからのレスポンス:", data);
+            //  setbookUrl(data.purchase.bookId);
+            //setbookUrl(data.Purchase_history.bookId);
+         
+
+          if (data.purchase?.bookId) {
+            setbookUrl(data.purchase.bookId);
+          } else {
+            console.warn("⚠️ bookIdが取得できません:", data.message || data);
+          }
+
             }catch(err){
-              console.log(err);
+         console.log("❌ fetch error:", err);
             }
       }
     }
-
-
     };
 
     fetchData();
    
-  });
+  },[sessionID] );
   //successのroute.tsにコメントアウトしてある　URL
   //または、このページのブラウザURL
 
@@ -54,7 +69,7 @@ const PurchaseSuccess = () => {
         </p>
         <div className="mt-6 text-center">
           <Link
-            href={`/`}
+            href={`/book/${bookUrl}`}
             className="text-indigo-600 hover:text-indigo-800 transition duration-300"
           >
             購入した記事を読む
