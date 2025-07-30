@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import  {Types as BookType} from '@/app/types/types';
+import  {Types as BookType} from '@/app/types/Types';
 import { use, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";

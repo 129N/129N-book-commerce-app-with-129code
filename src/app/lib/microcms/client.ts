@@ -1,7 +1,7 @@
 import { createClient, MicroCMSListResponse } from 'microcms-js-sdk';
 
 // import {Types as BookType} from '@/app/components/Book';
-import  {Types as BookType} from '@/app/types/types';
+import  {Types as BookType} from '@/app/types/Types';
 
 
 export const client = createClient({
@@ -27,4 +27,14 @@ export const getAllBooks = async(): Promise< MicroCMSListResponse <BookType> > =
         });
 
         return allBooks;
+};
+
+export const getDetailBook = async(contentId: string) =>{
+
+    const detailBook = await client.getListDetail<BookType>({
+        endpoint: "ebook", 
+        contentId,
+    });
+
+    return detailBook;
 };
