@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
 
   },
 
-  //reactStrictMode: false, //peisma studioの履歴重複を抑える。
+  reactStrictMode: false, //peisma studioの履歴重複を抑える。
 };
 
 export default nextConfig;

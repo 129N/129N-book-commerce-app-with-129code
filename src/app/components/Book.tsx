@@ -13,12 +13,14 @@ import { title } from "process";
 
 type BookProps = {
   book: BookType;
+  ispurchased: boolean,
+
 };
 //const Book = ({ book }: any) =>
 // anyは型がないので危険
 
 // eslint-disable-next-line react/display-name
-const Book = ({ book }: BookProps) => {
+const Book = ({ book, ispurchased }: BookProps) => {
 
   const [showModal, setShowModal] = useState(false);
 
@@ -30,7 +32,14 @@ const Book = ({ book }: BookProps) => {
 console.log(user?.id);
 console.log(book?.id);
   const handlePurchaseClick = () =>{
+    if(ispurchased){
+      alert("その商品は購入済み");
+    }
+
+    else{
     setShowModal(true);
+    }
+
   };
 
   const handlecancel =() => {
