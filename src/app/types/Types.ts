@@ -6,6 +6,7 @@ export type Types = {
   thumbnail: {  url: string;};
   createdAt: string;
   updatedAt: string;
+  purchasedbookINFO : string | any ;
     // thumbnail: string;　型の定義をしているので、anyよりも安全
 
 

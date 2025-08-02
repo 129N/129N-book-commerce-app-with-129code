@@ -1,14 +1,24 @@
-"use client";
+// "use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { signOut, useSession } from "next-auth/react";
-const Header = () => {
+import { nextAuthOptions } from "../lib/next-auth/options";
+import { getServerSession } from "next-auth";
+import { User } from "../types/Types";
 
-  const {data : session, status} = useSession();
-    if (status === "loading") return null;
 
-  const user = session?.user;
+//async を追加した
+const Header = async() => {
+
+  // const {data : session, status} = useSession();
+  // const user = session?.user;
+    //if (status === "loading") return null;
+
+  //SSRでの取得 but onclick はできないくなる(Usesessionのみ)。
+  const session = await getServerSession(nextAuthOptions)
+      const user: User = session?.user as User;
+
    console.log(user);
 
 const profileImage: string = user?.image && user.image.trim() !== "" 
@@ -33,11 +43,11 @@ const profileImage: string = user?.image && user.image.trim() !== ""
             href={user ? "/profile" : "/login"}
             className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
           >
-            {user ? "ログイン中" : "ログイン"}
+            {user ? "プロフィール" : "ログイン"}
           </Link>
 
           {user ? <button 
-          onClick={ () => signOut({callbackUrl: "/login"}) }
+         // onClick={ () => signOut({callbackUrl: "/login"}) }
           className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
           >ログアウト</button> : ""}
 

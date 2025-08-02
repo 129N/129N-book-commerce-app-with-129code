@@ -17,7 +17,6 @@ export default async function Home() {
 
 let purchaseBookIds : string[] ;
 
-
 //SSR なので、use clienthが使えない
   if(user){
 
