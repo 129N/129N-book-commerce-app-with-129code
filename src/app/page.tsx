@@ -15,7 +15,7 @@ export default async function Home() {
   const user: User = session?.user as User;
   //as USer　存在するときだけ型をつける。
 
-let purchaseBookIds : string[] ;
+  let purchaseBookIds : string[] = []; //
 
 //SSR なので、use clienthが使えない
   if(user){

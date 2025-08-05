@@ -40,16 +40,19 @@ const profileImage: string = user?.image && user.image.trim() !== ""
             ホーム
           </Link>
           <Link
-            href={user ? "/profile" : "/login"}
+          // href={user ? "/profile" : "/login"}
+            href={user ? "/profile" : "/api/auth/singin"}
             className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
           >
             {user ? "プロフィール" : "ログイン"}
           </Link>
 
-          {user ? <button 
+          {user ? <Link 
+            href={"/api/auth/signout/"}
+            //button属性のログイン
          // onClick={ () => signOut({callbackUrl: "/login"}) }
           className="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-          >ログアウト</button> : ""}
+          >ログアウト</Link> : ""}
 
           {/* <Link href={`/profile`}>
             <Image
