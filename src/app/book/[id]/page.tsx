@@ -3,9 +3,13 @@ import React from "react";
 import { getDetailBook } from "@/app/lib/microcms/client";
 import Book from "@/app/components/Book";
 
+type PageProps ={
+  params: {
+    id:string;
+  };
+};
 
-
-const DetailBook = async ({params}: {params: {id: string}}) => {
+const DetailBook = async ({params}: any) => {
 
   //  console.log(params.id);
 
