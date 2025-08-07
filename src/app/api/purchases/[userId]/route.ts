@@ -5,7 +5,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 //購入検索API
-export async function GET(request: NextRequest, 
+export async function GET(
+    request: NextRequest, 
      //{params} : {params: {userId: string}}
      context: { params: { userId: string } }
 )
@@ -16,8 +17,9 @@ export async function GET(request: NextRequest,
     //const url = new URL(request.url);
     // const userId = url.searchParams.get("userId");
     // const  userId  = params.userId;
+     //const { userId } = await context.params;
+     const { userId } = context.params;
 
-     const {userId} = await context.params;
 
      if (!userId) {
     return NextResponse.json({ error: "User ID is required" }, { status: 400 });
@@ -25,7 +27,7 @@ export async function GET(request: NextRequest,
 
     try{
         const purcahses = await prisma.purchase_history.findMany({
-            where:{userId},
+            where:{ userId },
         });
 
         // return NextResponse.json(purcahses);
