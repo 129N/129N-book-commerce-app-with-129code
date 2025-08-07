@@ -7,8 +7,8 @@ import { NextRequest, NextResponse } from "next/server";
 //購入検索API
 export async function GET(
     request: NextRequest, 
-     //{params} : {params: {userId: string}}
-     context: { params: { userId: string } }
+     {params} : {params: {userId: string}},
+     //context: { params: { userId: string } }
 )
 //paramsの引数とは？？userIdを取り出すため
 
@@ -18,7 +18,7 @@ export async function GET(
     // const userId = url.searchParams.get("userId");
     // const  userId  = params.userId;
      //const { userId } = await context.params;
-     const { userId } = context.params;
+     const { userId } = params;
 
 
      if (!userId) {
