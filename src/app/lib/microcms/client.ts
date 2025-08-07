@@ -6,8 +6,8 @@ import  {Types as BookType} from '@/app/types/Types';
 
 export const client = createClient({
 
-    serviceDomain: process.env.NEXT_PUBLIC_SERVICE_DOMAIN!,
-    apiKey: process.env.NEXT_PUBLIC_API_KEY!,
+    serviceDomain: process.env.NEXT_PUBLIC_MICROCMS_SERVICE_DOMAIN!,
+    apiKey: process.env.NEXT_PUBLIC_MICROCMS_API_KEY!,
 
     //! のマークは　|| undefinedと同義語。
     //空でも大丈夫という宣言

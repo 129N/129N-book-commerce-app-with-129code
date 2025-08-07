@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { getDetailBook } from "@/app/lib/microcms/client";
-import Book from "@/app/components/Book";
+// import Book from "@/app/components/Book";
 
 type PageProps ={
   params: {
