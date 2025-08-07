@@ -8,7 +8,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 //購入履歴の保存
 //購入履歴の重複を防止する機能を追加
 
-export async function POST(request: Request, response:Response) {
+export async function POST(request: Request) {
 
     const {sessionid} = await request.json();
     console.log("⬅️ クライアントからの sessionid:", sessionid);
