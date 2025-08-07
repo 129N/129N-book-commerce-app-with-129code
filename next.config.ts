@@ -16,9 +16,9 @@ const nextConfig: NextConfig = {
     ],
 
   },
-  eslint:{
-    ignoreDuringBuilds:true,
-  },
+  // eslint:{
+  //   ignoreDuringBuilds:true,
+  // },
 
   reactStrictMode: false, //peisma studioの履歴重複を抑える。
 };
