@@ -1,34 +1,39 @@
 import prisma from "@/app/lib/next-auth/prisma";
-import { Console } from "console";
-import { Params } from "next/dist/server/request/params";
-import { NextResponse } from "next/server";
+
+import { NextRequest, NextResponse } from "next/server";
 
 
 
 //購入検索API
-export async function GET(request: Request, 
-    // {params} : {params: {userId: string}}
-      context: { params: { userId: string } }
+export async function GET(request: NextRequest, 
+     //{params} : {params: {userId: string}}
+     context: { params: { userId: string } }
 )
 //paramsの引数とは？？userIdを取り出すため
 
 {
     // const userId = params.userId;
-    const url = new URL(request.url);
+    //const url = new URL(request.url);
     // const userId = url.searchParams.get("userId");
-    const {userId} = context.params;
+    // const  userId  = params.userId;
+
+     const {userId} = await context.params;
+
+     if (!userId) {
+    return NextResponse.json({ error: "User ID is required" }, { status: 400 });
+  }
+
     try{
-
         const purcahses = await prisma.purchase_history.findMany({
-            where:{userId}
+            where:{userId},
         });
-
 
         // return NextResponse.json(purcahses);
         return NextResponse.json(purcahses);
     }catch(err){
         
-        console.log(err);
+    console.error("Error fetching purchases:", err);
+    return NextResponse.json({ error: "Server error" }, { status: 500 });
         
     }
 }
