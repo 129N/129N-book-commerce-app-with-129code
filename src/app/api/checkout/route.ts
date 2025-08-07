@@ -5,7 +5,7 @@ import Stripe from "stripe";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 //stripe のAPIkeyから値段とtitileを取得
-export async function POST (request: Request, response: Response) {
+export async function POST (request: Request) {
 
     const {title, price, bookId, userId} = await request.json();
 
