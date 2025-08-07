@@ -27,7 +27,7 @@ export default async function Home() {
   );
 
   const purchasesData = await purchase_Reponse.json();
-  //console.log(purchasesData);
+console.log("✅ purchasesData:", purchasesData);
 
    purchaseBookIds = purchasesData.map(
     (purchaseBook : Purchase) => purchaseBook.bookId
