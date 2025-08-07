@@ -1,39 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-## Vercel, Prisma, Next-Auth, MicroCMS, Stripe, API leraning.
 
 
 
-## Getting Started
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+# Next.js × microCMS × Stripe 決済 ECサイト / EC site with Next.js × microCMS × Stripe
+
+このプロジェクトは、Next.js、microCMS、Stripe を用いたシンプルなECサイトです。Vercelでデプロイされています。  
+This project is a simple e-commerce site using Next.js, microCMS, and Stripe. It is deployed on Vercel.
+
+---
+
+## 🔧 使用技術 / Tech Stack
+
+- [Next.js](https://nextjs.org/) - React ベースのフレームワーク  
+  React-based framework for server-side rendering and static site generation.
+
+- [microCMS](https://microcms.io/) - ヘッドレスCMS（APIベース）  
+  Headless CMS for content management via API.
+
+- [Stripe](https://stripe.com/jp) - クレジットカード決済システム  
+  Payment system for handling credit card payments.
+
+- [Vercel](https://vercel.com/) - デプロイとホスティングサービス  
+  Platform for deployment and hosting.
+
+---
+
+## 📦 機能一覧 / Features
+
+- 商品一覧ページ  
+  Product list page
+
+- 商品詳細ページ  
+  Product detail page
+
+- Stripeによるクレジットカード決済  
+  Credit card payment via Stripe
+
+- 注文完了ページ  
+  Order confirmation page
+
+- Vercelでの自動デプロイ  
+  Auto deployment via Vercel
+
+---
+
+## 🚀 セットアップ方法 / Getting Started
+
+### 1. リポジトリのクローン / Clone the repository
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+
+
+
+### 2.パッケージのインストール / Install dependencies
 
 First, run the development server:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3.環境変数の設定 / Setup environment variables
+
+プロジェクトルートに .env.local ファイルを作成し、以下を記述してください：
+Create a .env.local file at the root of the project and add the following:
+
+```bash
+# microCMS
+MICROCMS_SERVICE_DOMAIN=your-service-domain
+MICROCMS_API_KEY=your-api-key
+
+# Stripe
+STRIPE_SECRET_KEY=your-stripe-secret-key
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your-stripe-publishable-key
+```
+
+
+### 4. 開発サーバーの起動 / Start development server
+
+http://localhost:3000 にアクセスできます。
+You can access it at http://localhost:3000.
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+--- 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🧾 Stripe 決済について / About Stripe Payments
+テストモードでは以下のカード番号を使用してください：
+Use the following card number for testing in Stripe:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+カード番号 / Card Number: 4242 4242 4242 4242
+有効期限 / Exp: Any future date
+CVC: 任意の3桁 / Any 3 digits
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 デプロイ（Vercel） / Deployment with Vercel
+Vercelはmainブランチへのpushで自動的にデプロイします。
+Vercel automatically deploys on push to the main branch.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+手動デプロイも可能です：
+You can also deploy manually:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Vercel にログイン / Log in to Vercel
 
-## Deploy on Vercel
+プロジェクトを新規作成 / Create a new project
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+環境変数を設定 / Add environment variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+デプロイ開始 / Start deployment
+
+
+
